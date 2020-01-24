@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TEMP_CLONE="temp_wiki"
+TEMP_CLONE="temp_repo"
 
 if [ -z "$EMAIL" ]; then
   echo "EMAIL enviroment is missing!"
