@@ -1,0 +1,46 @@
+name: 'GitHub Repository Sync'
+author: 'Andre601'
+description: 'Allows updating a target repository when files change in another (optionally with folders defined)'
+
+inputs:
+  email:
+    description: 'The E-Mail of the account to push changes as'
+    required: true
+  user:
+    description: 'Name of the user to push changes as'
+    required: true
+  src_owner:
+    description: 'Name of the user or organisation to pull the changes from'
+    required: true
+  src_repo:
+    description: 'Name of the repository to pull the changes from'
+    required: true
+  src_folder:
+    description: 'Folder to pull the changes from (Optional)'
+    required: false
+    default: '.'
+  target_owner:
+    description: 'Name of the user or organisation to push the changes to'
+    required: true
+  target_repo:
+    description: 'Name of the repository to push the changes to'
+    required: true
+  target_folder:
+    description: 'Name of the folder to push the changes to (Optional)'
+    required: false
+    default: '.'
+  exclude:
+    description: 'Comma-separated list of files to ignore from the sync (Optional)'
+    required: false
+  push_message:
+    description: 'The commit-message to display (Optional)'
+    required: false
+    default: 'Syncing repositories'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'rotate-cw'
+  color: 'gray-dark'
