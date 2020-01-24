@@ -13,7 +13,8 @@ Before setting this action up, make sure you did the following steps.
 - Copy the PAT
 - Go to your source repo, where you setup the file and add the PAT as a new secret. You can name it whatever you want.
 
-**Recommended**: If you want to keep your E-Mail save, create a separate secret containing your GitHub e-mail.
+**Recommended**:  
+If you want to keep your E-Mail save, create a separate secret containing your GitHub e-mail.
 
 After this is done can we now setup this action on your repository.
 
