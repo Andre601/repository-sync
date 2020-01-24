@@ -1,6 +1,6 @@
 [github-sync]: https://github.com/repo-sync/github-sync
 [wiki-creator]: https://github.com/Decathlon/wiki-page-creator-action
-[pat]: https://github.com/settings/tokens/new?scopes=repo&description=wiki%20page%20creator%20token
+[pat]: https://github.com/settings/tokens/new?scopes=repo&description=repository-sync%20token
 
 ## GitHub Repository Sync
 This action allows you to push changes made on one repo, to be pushed to another.
