@@ -79,4 +79,4 @@ fi
 
 git add .
 git commit -m "$PUSH_MESSAGE"
-git push --set-upstream https://${PAT}@github.com/$TARGET_OWNER/$TARGET_REPO
+git push --set-upstream https://${PAT}@github.com/$TARGET_OWNER/$TARGET_REPO.git master
