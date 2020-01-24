@@ -8,7 +8,7 @@ inputs:
     required: true
   user:
     description: 'Name of the user to push changes as'
-    required true
+    required: true
   src_owner:
     description: 'Name of the user or organisation to pull the changes from'
     required: true
@@ -32,7 +32,6 @@ inputs:
   exclude:
     description: 'Comma-separated list of files to ignore from the sync (Optional)'
     required: false
-    default: ''
   push_message:
     description: 'The commit-message to display (Optional)'
     required: false
