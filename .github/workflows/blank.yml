@@ -16,7 +16,7 @@ jobs:
         SRC_OWNER: Andre601
         SRC_REPO: repository-sync
         TARGET_OWNER: Andre601
-        TARGET_REPO: repository-sync
+        TARGET_REPO: repository-sync-backup
         TARGET_FOLDER: backup
         EXCLUDE: 'README.md'
         PUSH_MESSAGE: 'Updating target repo'
