@@ -12,12 +12,12 @@ if [ -z "$USER" ]; then
   exit 1
 fi
 
-if [ -z "$SRC_OWNER" ]; then
+if [ -z "$OWNER" ]; then
   echo "OWNER enviroment is missing! Cannot continue."
   exit 1
 fi
 
-if [ -z "$SRC_REPO" ]; then
+if [ -z "$REPO" ]; then
   echo "SRC_REPO enviroment is missing! Cannot continue."
   exit 1
 fi
@@ -25,16 +25,6 @@ fi
 if [ -z "$SRC_FOLDER" ]; then
   echo "SRC_FOLDER enviroment is missing! Default to no folder."
   SRC_FOLDER='.'
-fi
-
-if [ -z "$TARGET_OWNER" ]; then
-  echo "TARGET_OWNER enviroment is missing! Cannot continue."
-  exit 1
-fi
-
-if [ -z "$TARGET_REPO" ]; then
-  echo "TARGET_REPO enviroment is missing! Cannot continue."
-  exit 1
 fi
 
 if [ -z "$TARGET_FOLDER" ]; then
@@ -58,7 +48,7 @@ cd $TEMP_CLONE
 git init
 git config user.name $USER
 git config user.email $EMAIL
-git pull https://${PAT}@github.com/$SRC_OWNER/$SRC_REPO.git
+git pull https://${PAT}@github.com/$OWNER/$REPO.git
 cd ..
 
 for i in $(fin $SRC_FOLDER -maxdepth 1 -type f -execdir basename '{}' ';'); do
@@ -79,4 +69,4 @@ fi
 
 git add .
 git commit -m "$PUSH_MESSAGE"
-git push --set-upstream https://${PAT}@github.com/$TARGET_OWNER/$TARGET_REPO.git master
+git push --set-upstream https://${PAT}@github.com/$OWNER/$REPO.git master
