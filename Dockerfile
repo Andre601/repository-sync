@@ -1,6 +1,6 @@
 FROM alpine:3.10
 
-RUN apk add --no-cache git openssh-client bash && \
+RUN apk add --no-cache git openssh-client bash findutil && \
   echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
 COPY entrypoint.sh /entrypoint.sh
