@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 TEMP_CLONE="temp_repo"
 
