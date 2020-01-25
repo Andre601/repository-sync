@@ -18,7 +18,7 @@ if [ -z "$OWNER" ]; then
 fi
 
 if [ -z "$REPO" ]; then
-  echo "SRC_REPO enviroment is missing! Cannot continue."
+  echo "REPO enviroment is missing! Cannot continue."
   exit 1
 fi
 
