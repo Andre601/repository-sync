@@ -37,10 +37,8 @@ jobs:
         PAT: ${{ secrets.PAT }}
         EMAIL: ${{ secrets.EMAIL }}
         USER: MyName
-        SRC_OWNER: MyName
-        SRC_REPO: MyRepo
-        TARGET_OWNER: MyName
-        TARGET_REPO: MyRepo-backup
+        OWNER: MyName
+        REPO: TargetRepo
 ```
 
 #### Required ENV variables
@@ -51,21 +49,17 @@ The Personal Access Token to use.
 The E-Mail address to use.
 - `USER`  
 The Username to use.
-- `SRC_OWNER`  
-Name of the user or organisation of the source repository.
-- `SRC_REPO`  
-Name of the source repository.
-- `TARGET_OWNER`  
+- `OWNER`  
 Name of the user or organisation of the target repository.
-- `TARGET_REPO`  
+- `REPO`  
 Name of the target repository.
 
 #### Optional ENV variables
 
 - `SRC_FOLDER`  
-Folder to pull the files from. Defaults to `.` (Entire repository)
+Folder to pull the files from. Defaults to `.` (Entire source repository)
 - `TARGET_FOLDER`  
-Folder to push the files to. Defaults to `.` (Root directory of the repository)
+Folder to push the files to. Defaults to `.` (Root directory of the target repository)
 - `EXCLUDE`  
 Comma-separated String of file-names that should be excluded from the push. Defaults to no exclusion.
 - `PUSH_MESSAGE`  
@@ -90,11 +84,9 @@ jobs:
         PAT: ${{ secrets.PAT }}
         EMAIL: ${{ secrets.EMAIL }}
         USER: MyName
-        SRC_OWNER: MyName
-        SRC_REPO: MyRepo
+        OWNER: MyName
+        REPO: TargetRepo
         SRC_FOLDER: cat-images
-        TARGET_OWNER: MyName
-        TARGET_REPO: MyRepo-backup
         TARGET_FOLDER: images/cat-images
         EXCLUDE: 'README.md'
         PUSH_MESSAGE: 'Saving the cute cat images'
