@@ -54,7 +54,7 @@ cd ..
 
 mkdir $TEMP_FILES
 
-for i in $(find $SRC_FOLDER -type f -execdir basename '{}' ';'); do
+for i in $(find $SRC_FOLDER -maxdepth 1 -type f -execdir basename '{}' ';'); do
     echo "[INFO] Found $i"
     if [[ ! " ${SKIP_DOC[@]} " =~ " ${i} " ]]; then
         cp $SRC_FOLDER/$i /$TEMP_FILES
@@ -67,7 +67,7 @@ echo *
 
 echo "[INFO] Pushing changes"
 
-for i in $(find $TEMP_FILES -type f); do
+for i in $(find $TEMP_FILES -maxdepth 1 -type f); do
     echo "[INFO] Processing $i..."
     if [ ! -z "$TARGET_FOLDER" ]; then
       mv -f $i /$TEMP_CLONE/$TARGET_FOLDER
