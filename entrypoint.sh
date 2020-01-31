@@ -4,32 +4,32 @@ TEMP_CLONE="temp_repo"
 TEMP_FILES="temp_files"
 
 if [ -z "$EMAIL" ]; then
-  echo "EMAIL enviroment is missing!"
+  echo "[ERROR] EMAIL enviroment is missing!"
   exit 1
 fi
 
 if [ -z "$USER" ]; then
-  echo "USER enviroment is missing!"
+  echo "[ERROR] USER enviroment is missing!"
   exit 1
 fi
 
 if [ -z "$OWNER" ]; then
-  echo "OWNER enviroment is missing! Cannot continue."
+  echo "[ERROR] OWNER enviroment is missing! Cannot continue."
   exit 1
 fi
 
 if [ -z "$REPO" ]; then
-  echo "REPO enviroment is missing! Cannot continue."
+  echo "[ERROR] REPO enviroment is missing! Cannot continue."
   exit 1
 fi
 
 if [ -z "$SRC_FOLDER" ]; then
-  echo "SRC_FOLDER enviroment is missing! Default to no folder."
+  echo "[INFO] SRC_FOLDER enviroment is missing! Default to no folder."
   SRC_FOLDER='.'
 fi
 
 if [ -z "$TARGET_FOLDER" ]; then
-  echo "TARGET_FOLDER enviroment is missing! Defaulting to no folder."
+  echo "[INFO] TARGET_FOLDER enviroment is missing! Defaulting to no folder."
   TARGET_FOLDER='.'
 fi
 
@@ -40,7 +40,7 @@ else
 fi
 
 if [ -z "$PUSH_MESSAGE" ]; then
-  echo "PUSH_MESSAGE enviroment is missing! Defaulting to 'Syncing repositories'"
+  echo "[INFO] PUSH_MESSAGE enviroment is missing! Defaulting to 'Syncing repositories'"
   PUSH_MESSAGE='Syncing repositories'
 fi
 
@@ -55,22 +55,22 @@ cd ..
 mkdir $TEMP_FILES
 
 for i in $(find $SRC_FOLDER -maxdepth 1 -type f -execdir basename '{}' ';'); do
-    echo $i
+    echo "[INFO] Found $i"
     if [[ ! " ${SKIP_DOC[@]} " =~ " ${i} " ]]; then
-        cp $SRC_FOLDER/$i $TEMP_FILES
+        cp $SRC_FOLDER/$i /$TEMP_FILES
     else
-        echo "Exclude $i from Sync."
+        echo "[INFO] Exclude $i from Sync."
     fi
 done
 
-echo "Pushing changes"
+echo "[INFO] Pushing changes"
 cd $TEMP_FILES
 
 if [ ! -z "$TARGET_FOLDER" ]; then
-  mv -f * $TEMP_CLONE/$TARGET_FOLDER
+  mv -f * /$TEMP_CLONE/$TARGET_FOLDER
   cd /$TEMP_CLONE/$TARGET_FOLDER
 else
-  mv -f * $TEMP_CLONE
+  mv -f * /$TEMP_CLONE
   cd /$TEMP_CLONE
 fi
 
