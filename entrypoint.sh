@@ -68,12 +68,14 @@ echo *
 echo "[INFO] Pushing changes"
 cd $TEMP_FILES
 
+echo *
+
 if [ ! -z "$TARGET_FOLDER" ]; then
-  mv -f $TEMP_FILES/* /$TEMP_CLONE/$TARGET_FOLDER
+  mv -f * /$TEMP_CLONE/$TARGET_FOLDER
   cd ..
   cd $TEMP_CLONE/$TARGET_FOLDER
 else
-  mv -f $TEMP_FILES/* /$TEMP_CLONE
+  mv -f * /$TEMP_CLONE
   cd ..
   cd $TEMP_CLONE
 fi
