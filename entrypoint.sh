@@ -63,7 +63,10 @@ for i in $(find $SRC_FOLDER -maxdepth 1 -type f -execdir basename '{}' ';'); do
     fi
 done
 
+tree
+
 echo "[INFO] Pushing changes"
+cd $TEMP_FILES
 
 if [ ! -z "$TARGET_FOLDER" ]; then
   mv -f $TEMP_FILES/* /$TEMP_CLONE/$TARGET_FOLDER
