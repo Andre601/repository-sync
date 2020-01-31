@@ -13,10 +13,8 @@ jobs:
         PAT: ${{ secrets.PAT }}
         EMAIL: ${{ secrets.EMAIL }}
         USER: Andre601
-        SRC_OWNER: Andre601
-        SRC_REPO: repository-sync
-        TARGET_OWNER: Andre601
-        TARGET_REPO: repository-sync-backup
+        OWNER: Andre601
+        REPO: repository-sync-backup
         TARGET_FOLDER: backup
         EXCLUDE: 'README.md'
         PUSH_MESSAGE: 'Updating target repo'
