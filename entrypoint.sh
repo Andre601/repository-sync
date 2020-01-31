@@ -54,7 +54,7 @@ cd ..
 
 mkdir $TEMP_FILES
 
-for i in $(find $SRC_FOLDER -maxdepth 1 -type f -execdir basename '{}' ';'); do
+for i in $(find $SRC_FOLDER -execdir basename '{}' ';'); do
     echo "[INFO] Found $i"
     if [[ ! " ${SKIP_DOC[@]} " =~ " ${i} " ]]; then
         cp $SRC_FOLDER/$i /$TEMP_FILES
@@ -66,19 +66,17 @@ done
 echo *
 
 echo "[INFO] Pushing changes"
-cd $TEMP_FILES
 
-echo *
+for i in $(find $TEMP_FILES); do
+    echo "[INFO] Processing $i..."
+    if [ ! -z "$TARGET_FOLDER" ]; then
+      mv -f $i /$TEMP_CLONE/$TARGET_FOLDER
+    else
+      mv -f $i /$TEMP_CLONE
+    fi
+done
 
-if [ ! -z "$TARGET_FOLDER" ]; then
-  mv -f * /$TEMP_CLONE/$TARGET_FOLDER
-  cd ..
-  cd $TEMP_CLONE/$TARGET_FOLDER
-else
-  mv -f * /$TEMP_CLONE
-  cd ..
-  cd $TEMP_CLONE
-fi
+cd $TEMP_CLONE
 
 git add .
 git commit -m "$PUSH_MESSAGE"
