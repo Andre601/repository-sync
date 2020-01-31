@@ -63,7 +63,7 @@ for i in $(find $SRC_FOLDER -maxdepth 1 -type f -execdir basename '{}' ';'); do
     fi
 done
 
-tree
+echo *
 
 echo "[INFO] Pushing changes"
 cd $TEMP_FILES
