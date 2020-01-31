@@ -1,6 +1,7 @@
 #!/bin/bash
 
 TEMP_CLONE="temp_repo"
+TEMP_FILES="temp_files"
 
 if [ -z "$EMAIL" ]; then
   echo "EMAIL enviroment is missing!"
@@ -51,20 +52,26 @@ git config user.email $EMAIL
 git pull https://${PAT}@github.com/$OWNER/$REPO.git
 cd ..
 
-for i in $(fin $SRC_FOLDER -maxdepth 1 -type f -execdir basename '{}' ';'); do
+mkdir $TEMP_FILES
+
+for i in $(find $SRC_FOLDER -maxdepth 1 -type f -execdir basename '{}' ';'); do
     echo $i
     if [[ ! " ${SKIP_DOC[@]} " =~ " ${i} " ]]; then
-        cp $SRC_FOLDER/$i $TEMP_CLONE
+        cp $SRC_FOLDER/$i $TEMP_FILES
     else
         echo "Exclude $i from Sync."
     fi
 done
 
 echo "Pushing changes"
-cd $TEMP_CLONE
+cd $TEMP_FILES
 
 if [ ! -z "$TARGET_FOLDER" ]; then
-  cd $TARGET_FOLDER
+  mv -f * $TEMP_CLONE/$TARGET_FOLDER
+  cd /$TEMP_CLONE/$TARGET_FOLDER
+else
+  mv -f * $TEMP_CLONE
+  cd /$TEMP_CLONE
 fi
 
 git add .
