@@ -2,6 +2,9 @@
 [wiki-creator]: https://github.com/Decathlon/wiki-page-creator-action
 [pat]: https://github.com/settings/tokens/new?scopes=repo&description=repository-sync%20token
 
+> # Archived
+> This repo has been archived as it is fairly difficult to achieve what this Action is supposed to do.
+
 ## GitHub Repository Sync
 This action allows you to push changes made on one repo, to be pushed to another.
 
